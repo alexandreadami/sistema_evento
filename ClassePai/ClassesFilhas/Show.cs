@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace ProjetoEvento.ClassePai.ClassesFilhas
 {
@@ -52,19 +53,38 @@ namespace ProjetoEvento.ClassePai.ClassesFilhas
 
             return efetuado;
         
+        }
 
 
+            public override string Pesquisar(string Titulo){
+                string resultado = "Título não encontrado!";
+                StreamReader ler = null;
+
+                try
+                {
+                    ler = new StreamReader("show.csv",Encoding.Default);
+                    string linha = "";
+                    while((linha=ler.ReadLine())!=null){
+                        string[] dados = linha.Split(';');
+                        if(dados[0] == Titulo){
+                            resultado = linha;
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex){
+                    resultado = "Erro ao tentar ler o arquivo." + ex.Message;
+                    throw;
+                }
+                finally{
+                    ler.Close();
+                }
 
 
-
-
-
-
-
-
+                return resultado;
+            }
 
         
-        }
-    
     }
+    
 }
