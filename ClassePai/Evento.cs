@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+
 namespace ProjetoEvento.ClassePai
 {
     public abstract class Evento
@@ -14,8 +16,12 @@ namespace ProjetoEvento.ClassePai
 
 
         public virtual bool Cadastrar(){
-            return false;
+
+           return false;
         }
+
+
+
 
         public virtual string Pesquisar(DateTime DataEvento){
             return null;
